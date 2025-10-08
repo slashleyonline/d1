@@ -1,8 +1,13 @@
-import exampleIconUrl from "./noun-paperclip-7598668-00449F.png";
 import "./style.css";
 
-document.body.innerHTML += `
-  <p>Example image asset: <img src="${exampleIconUrl}" class="icon" /></p>
-`;
+const button = document.createElement("button");
+button.style.fontSize = "4em";
+button.innerText = "Add";
+document.body.appendChild(button);
 
-document.body.innerHTML += 'hello world!'
+let total = 0;
+
+button.addEventListener("click", () => {
+  console.log("1 person added!");
+  total += 1;
+});
