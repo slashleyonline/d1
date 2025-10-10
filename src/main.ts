@@ -6,7 +6,7 @@ button.innerText = "Add";
 document.body.appendChild(button);
 
 const counterDiv = document.createElement("div");
-counterDiv.textContent = "total amount: 0";
+counterDiv.textContent = "🚶 total amount: 0";
 document.body.appendChild(counterDiv);
 
 let total = 0;
@@ -19,5 +19,5 @@ button.addEventListener("click", () => {
 });
 
 function updateCounter(input: number) {
-  counterDiv.innerText = String("total amount: ") + input;
+  counterDiv.innerText = String("🚶 total amount: ") + input;
 }
