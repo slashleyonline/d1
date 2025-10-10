@@ -15,12 +15,21 @@ button.addEventListener("click", () => {
   buttonClick();
 });
 
-setInterval(buttonClick, 1000);
+requestAnimationFrame(autoClick);
+
+//we gotta give this the axe.
+//setInterval(buttonClick, 1000);
 
 function buttonClick() {
   console.log("total amount: ", String(total));
   total += 1;
   updateCounter(total);
+}
+
+function autoClick() {
+  total += 1 / 60;
+  updateCounter(total);
+  requestAnimationFrame(autoClick);
 }
 
 function updateCounter(input: number) {
