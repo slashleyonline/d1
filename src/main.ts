@@ -12,11 +12,15 @@ document.body.appendChild(counterDiv);
 let total = 0;
 
 button.addEventListener("click", () => {
-  console.log("1 person added!");
+});
+
+setInterval(buttonClick, 1000);
+
+function buttonClick() {
   console.log("total amount: ", String(total));
   total += 1;
   updateCounter(total);
-});
+}
 
 function updateCounter(input: number) {
   counterDiv.innerText = String("🚶 total amount: ") + input;
