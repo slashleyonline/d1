@@ -12,6 +12,7 @@ document.body.appendChild(counterDiv);
 let total = 0;
 
 button.addEventListener("click", () => {
+  buttonClick();
 });
 
 setInterval(buttonClick, 1000);
