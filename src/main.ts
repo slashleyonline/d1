@@ -23,7 +23,7 @@ button.addEventListener("click", () => {
 requestAnimationFrame(autoClick);
 
 function buttonClick() {
-  console.log("total amount: ", String(total));
+  //console.log("total amount: ", String(total));
   total += 1;
   updateCounter(total);
 }
