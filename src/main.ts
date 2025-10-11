@@ -9,9 +9,8 @@ const counterDiv = document.createElement("div");
 counterDiv.textContent = "🚶 total amount: 0";
 document.body.appendChild(counterDiv);
 
-
 //duration until next autoclick occurs
-let autoClickDuration = 1000;
+const autoClickDuration = 0.001;
 //previous time that the autoclick function was called
 let prevAutoClickTime: number | null = null;
 //total amount of clicks
@@ -34,7 +33,7 @@ function autoClick() {
     prevAutoClickTime = performance.now();
   }
 
-  const deltaTime = (performance.now() - prevAutoClickTime) / autoClickDuration;
+  const deltaTime = (performance.now() - prevAutoClickTime) * autoClickDuration;
 
   total += 1 * deltaTime;
   updateCounter(total);
