@@ -18,7 +18,11 @@ gameContainer.appendChild(buyButton);
 
 const counterDiv = document.createElement("div");
 counterDiv.textContent = "🚶 total amount: 0";
-document.body.appendChild(counterDiv);
+gameContainer.appendChild(counterDiv);
+
+const growthRateDiv = document.createElement("div");
+counterDiv.textContent = "0 people per second.";
+gameContainer.appendChild(growthRateDiv);
 
 //VARIABLES RELEVANT TO GAMEPLAY
 
@@ -77,7 +81,14 @@ function updateCounter(input: number) {
 function purchaseClicker() {
   autoClickRate += 0.001;
   total -= 10;
+
   checkPrices();
+  updateGrowthRateDiv();
+}
+
+function updateGrowthRateDiv() {
+  let rate: number = autoClickRate * 1000;
+  growthRateDiv.innerText = rate + String(" people per second.");
 }
 
 function checkPrices() {
