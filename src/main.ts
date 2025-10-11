@@ -9,6 +9,12 @@ const counterDiv = document.createElement("div");
 counterDiv.textContent = "🚶 total amount: 0";
 document.body.appendChild(counterDiv);
 
+
+//duration until next autoclick occurs
+let autoClickDuration = 1000;
+//previous time that the autoclick function was called
+let prevAutoClickTime: number | null = null;
+//total amount of clicks
 let total = 0;
 
 button.addEventListener("click", () => {
@@ -17,9 +23,6 @@ button.addEventListener("click", () => {
 
 requestAnimationFrame(autoClick);
 
-//we gotta give this the axe.
-//setInterval(buttonClick, 1000);
-
 function buttonClick() {
   console.log("total amount: ", String(total));
   total += 1;
@@ -27,11 +30,19 @@ function buttonClick() {
 }
 
 function autoClick() {
-  total += 1 / 60;
+  if (prevAutoClickTime == null) {
+    prevAutoClickTime = performance.now();
+  }
+
+  const deltaTime = (performance.now() - prevAutoClickTime) / autoClickDuration;
+
+  total += 1 * deltaTime;
   updateCounter(total);
+
+  prevAutoClickTime = performance.now();
   requestAnimationFrame(autoClick);
 }
 
 function updateCounter(input: number) {
-  counterDiv.innerText = String("🚶 total amount: ") + input;
+  counterDiv.innerText = String("🚶 total amount: ") + Math.trunc(input);
 }
