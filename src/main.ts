@@ -87,8 +87,8 @@ function purchaseClicker() {
 }
 
 function updateGrowthRateDiv() {
-  let rate: number = autoClickRate * 1000;
-  growthRateDiv.innerText = rate + String(" people per second.");
+  const rate: number = autoClickRate * 1000;
+  growthRateDiv.innerText = Math.trunc(rate) + String(" people per second.");
 }
 
 function checkPrices() {
