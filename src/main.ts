@@ -37,8 +37,7 @@ requestAnimationFrame(autoClick);
 
 function buttonClick() {
   //console.log("total amount: ", String(total));
-  total += 1;
-  updateCounter(total);
+  addToTotal(1);
 }
 
 function autoClick() {
@@ -48,11 +47,15 @@ function autoClick() {
 
   const deltaTime = (performance.now() - prevAutoClickTime) * autoClickRate;
 
-  total += 1 * deltaTime;
-  updateCounter(total);
+  addToTotal(1 * deltaTime);
 
   prevAutoClickTime = performance.now();
   requestAnimationFrame(autoClick);
+}
+
+function addToTotal(input: number) {
+  total += input;
+  updateCounter(total);
 }
 
 function updateCounter(input: number) {
