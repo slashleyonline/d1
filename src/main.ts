@@ -1,5 +1,7 @@
 import "./style.css";
 
+//HTML-CSS PREAMBLE
+
 const gameContainer = document.createElement("div");
 document.body.appendChild(gameContainer);
 
@@ -18,13 +20,16 @@ const counterDiv = document.createElement("div");
 counterDiv.textContent = "🚶 total amount: 0";
 document.body.appendChild(counterDiv);
 
-//DEFAULT duration until next autoclick occurs
-let autoClickRate = 0;
+//VARIABLES RELEVANT TO GAMEPLAY
 
+//duration until next autoclick occurs
+let autoClickRate = 0;
 //previous time that the autoclick function was called
 let prevAutoClickTime: number | null = null;
 //total amount of clicks
 let total = 0;
+
+//EVENT LISTENERS
 
 button.addEventListener("click", () => {
   buttonClick();
@@ -34,7 +39,11 @@ buyButton.addEventListener("click", () => {
   purchaseClicker();
 });
 
+//ANIMATION
+
 requestAnimationFrame(autoClick);
+
+//FUNCTIONS
 
 function buttonClick() {
   //console.log("total amount: ", String(total));
@@ -61,7 +70,8 @@ function addToTotal(input: number) {
 }
 
 function updateCounter(input: number) {
-  counterDiv.innerText = String("🚶 total amount: ") + Math.trunc(input);
+  counterDiv.innerText = String("🚶 total amount: ") +
+    (Math.trunc(input * 100) / 100);
 }
 
 function purchaseClicker() {
