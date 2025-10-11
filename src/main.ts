@@ -9,6 +9,7 @@ button.innerText = "Add";
 gameContainer.appendChild(button);
 
 const buyButton = document.createElement("button");
+buyButton.disabled = true;
 buyButton.style.fontSize = "4em";
 buyButton.innerText = "Buy an autoclicker!";
 gameContainer.appendChild(buyButton);
@@ -56,6 +57,7 @@ function autoClick() {
 function addToTotal(input: number) {
   total += input;
   updateCounter(total);
+  checkPrices();
 }
 
 function updateCounter(input: number) {
@@ -64,4 +66,15 @@ function updateCounter(input: number) {
 
 function purchaseClicker() {
   autoClickRate += 0.001;
+  total -= 10;
+  checkPrices();
+}
+
+function checkPrices() {
+  //checks if the prices for any item in the shop are within the player's budget.
+  if (total >= 10) {
+    buyButton.disabled = false;
+  } else {
+    buyButton.disabled = true;
+  }
 }
