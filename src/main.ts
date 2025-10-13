@@ -15,17 +15,17 @@ button.style.fontSize = "4em";
 button.innerText = "Add";
 addButtonDiv.appendChild(button);
 
-const buttonsDiv = document.createElement("div");
-buttonsDiv.id = "shop";
-gameContainer.appendChild(buttonsDiv);
-
 const counterDiv = document.createElement("div");
 counterDiv.textContent = "🚶 total amount: 0";
-gameContainer.appendChild(counterDiv);
+addButtonDiv.appendChild(counterDiv);
 
 const growthRateDiv = document.createElement("div");
 growthRateDiv.textContent = "0 people per second.";
-gameContainer.appendChild(growthRateDiv);
+addButtonDiv.appendChild(growthRateDiv);
+
+const buttonsDiv = document.createElement("div");
+buttonsDiv.id = "shop";
+gameContainer.appendChild(buttonsDiv);
 
 //INTERFACE
 
