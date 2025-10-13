@@ -39,6 +39,32 @@ const growthRateDiv = document.createElement("div");
 growthRateDiv.textContent = "0 people per second.";
 gameContainer.appendChild(growthRateDiv);
 
+//INTERFACE
+
+interface Upgrade {
+  name: string;
+  count: number;
+  rate: number;
+}
+
+const upgradeA: Upgrade = {
+  name: "Upgrade A",
+  count: 0,
+  rate: 0.0001,
+};
+
+const upgradeB: Upgrade = {
+  name: "Upgrade B",
+  count: 0,
+  rate: 0.0001,
+};
+
+const upgradeC: Upgrade = {
+  name: "Upgrade C",
+  count: 0,
+  rate: 0.0001,
+};
+
 //VARIABLES RELEVANT TO GAMEPLAY
 
 //duration until next autoclick occurs
@@ -127,7 +153,8 @@ function purchaseClickerTypeC() {
 
 function updateGrowthRateDiv() {
   const rate: number = autoClickRate * 1000;
-  growthRateDiv.innerText = (Math.trunc(rate * 100) / 100) + String(" people per second.");
+  growthRateDiv.innerText = (Math.trunc(rate * 100) / 100) +
+    String(" people per second.");
 }
 
 function checkPrices() {
