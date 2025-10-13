@@ -48,6 +48,11 @@ const upgrades: Upgrade[] = [{
   count: 0,
   rate: 0.05,
   price: 1000,
+  }, {
+  name: "upgradeD",
+  count: 0,
+  rate: 0.5,
+  price: 10000,
 }];
 
 interface purchaseButton {
@@ -112,8 +117,7 @@ function autoClick() {
   }
 
   const deltaTime = (performance.now() - prevAutoClickTime) * autoClickRate;
-
-  addToTotal(1 * deltaTime);
+  addToTotal(deltaTime);
 
   prevAutoClickTime = performance.now();
   requestAnimationFrame(autoClick);
