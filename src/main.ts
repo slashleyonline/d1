@@ -41,29 +41,32 @@ gameContainer.appendChild(growthRateDiv);
 
 //INTERFACE
 
+//Upgrade Interface for buyable items
+
 interface Upgrade {
   name: string;
   count: number;
   rate: number;
+  price: number;
 }
 
-const upgradeA: Upgrade = {
-  name: "Upgrade A",
+//FOR ALL ITEMS, MAKE A FUNCTION THAT ADDS BUTTONS BASED ON THE ITEM
+const upgrades: Upgrade[] = [{
+  name: "upgradeA",
   count: 0,
   rate: 0.0001,
-};
-
-const upgradeB: Upgrade = {
-  name: "Upgrade B",
+  price: 10,
+}, {
+  name: "upgradeB",
   count: 0,
-  rate: 0.0001,
-};
-
-const upgradeC: Upgrade = {
-  name: "Upgrade C",
+  rate: 0.002,
+  price: 100,
+}, {
+  name: "upgradeC",
   count: 0,
-  rate: 0.0001,
-};
+  rate: 0.05,
+  price: 1000,
+}];
 
 //VARIABLES RELEVANT TO GAMEPLAY
 
@@ -73,23 +76,24 @@ let autoClickRate = 0;
 let prevAutoClickTime: number | null = null;
 //total amount of clicks
 let total = 0;
-
 //EVENT LISTENERS
+
+addButtons();
 
 button.addEventListener("click", () => {
   buttonClick();
 });
 
 buyButtonA.addEventListener("click", () => {
-  purchaseClickerTypeA();
+  purchaseClicker(getUpgrade("upgradeA"));
 });
 
 buyButtonB.addEventListener("click", () => {
-  purchaseClickerTypeB();
+  purchaseClicker(getUpgrade("upgradeB"));
 });
 
 buyButtonC.addEventListener("click", () => {
-  purchaseClickerTypeC();
+  purchaseClicker(getUpgrade("upgradeC"));
 });
 
 //ANIMATION
@@ -97,6 +101,24 @@ buyButtonC.addEventListener("click", () => {
 requestAnimationFrame(autoClick);
 
 //FUNCTIONS
+
+function addButtons() {
+  for (const upgrade of upgrades) {
+    createButton(upgrade);
+  }
+}
+
+function createButton(upgradeData: Upgrade) {
+  const newButton = document.createElement("button");
+  newButton.disabled = true;
+  newButton.style.fontSize = "4em";
+  newButton.innerText = "Buy an autoclicker! - " + upgradeData.name;
+  buttonsDiv.appendChild(newButton);
+
+  newButton.addEventListener("click", () => {
+    purchaseClicker(getUpgrade(upgradeData.name));
+  });
+}
 
 function buttonClick() {
   //console.log("total amount: ", String(total));
@@ -127,25 +149,22 @@ function updateCounter(input: number) {
     (Math.trunc(input * 100) / 100);
 }
 
-function purchaseClickerTypeA() {
-  autoClickRate += 0.0001;
-  total -= 10;
-
-  checkPrices();
-  updateGrowthRateDiv();
+function getUpgrade(UpgradeName: string): Upgrade | null {
+  for (const i of upgrades) {
+    if (i.name === UpgradeName) {
+      return i;
+    }
+  }
+  return null;
 }
 
-function purchaseClickerTypeB() {
-  autoClickRate += 0.002;
-  total -= 100;
-
-  checkPrices();
-  updateGrowthRateDiv();
-}
-
-function purchaseClickerTypeC() {
-  autoClickRate += 0.05;
-  total -= 1000;
+function purchaseClicker(type: Upgrade | null) {
+  if (type === null) {
+    return;
+  }
+  autoClickRate += type.rate;
+  total -= type.price;
+  type.count += 1;
 
   checkPrices();
   updateGrowthRateDiv();
