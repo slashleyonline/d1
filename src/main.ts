@@ -6,12 +6,17 @@ const gameContainer = document.createElement("div");
 gameContainer.id = "gameContainer";
 document.body.appendChild(gameContainer);
 
+const addButtonDiv = document.createElement("div");
+addButtonDiv.id = "clicker";
+gameContainer.appendChild(addButtonDiv);
+
 const button = document.createElement("button");
 button.style.fontSize = "4em";
 button.innerText = "Add";
-gameContainer.appendChild(button);
+addButtonDiv.appendChild(button);
 
 const buttonsDiv = document.createElement("div");
+buttonsDiv.id = "shop";
 gameContainer.appendChild(buttonsDiv);
 
 const counterDiv = document.createElement("div");
