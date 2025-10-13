@@ -13,24 +13,6 @@ gameContainer.appendChild(button);
 const buttonsDiv = document.createElement("div");
 gameContainer.appendChild(buttonsDiv);
 
-const buyButtonA = document.createElement("button");
-buyButtonA.disabled = true;
-buyButtonA.style.fontSize = "4em";
-buyButtonA.innerText = "Buy an autoclicker! - A";
-buttonsDiv.appendChild(buyButtonA);
-
-const buyButtonB = document.createElement("button");
-buyButtonB.disabled = true;
-buyButtonB.style.fontSize = "4em";
-buyButtonB.innerText = "Buy an autoclicker! - B";
-buttonsDiv.appendChild(buyButtonB);
-
-const buyButtonC = document.createElement("button");
-buyButtonC.disabled = true;
-buyButtonC.style.fontSize = "4em";
-buyButtonC.innerText = "Buy an autoclicker! - C";
-buttonsDiv.appendChild(buyButtonC);
-
 const counterDiv = document.createElement("div");
 counterDiv.textContent = "🚶 total amount: 0";
 gameContainer.appendChild(counterDiv);
