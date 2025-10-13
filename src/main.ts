@@ -48,7 +48,7 @@ const upgrades: Upgrade[] = [{
   count: 0,
   rate: 0.05,
   price: 1000,
-  }, {
+}, {
   name: "upgradeD",
   count: 0,
   rate: 0.5,
@@ -149,6 +149,7 @@ function purchaseClicker(type: Upgrade | null) {
   }
   autoClickRate += type.rate;
   total -= type.price;
+  type.price *= 1.15
   type.count += 1;
 
   checkPrices();
