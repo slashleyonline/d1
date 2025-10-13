@@ -50,7 +50,12 @@ const upgrades: Upgrade[] = [{
   price: 1000,
 }];
 
-//VARIABLES RELEVANT TO GAMEPLAY
+interface purchaseButton {
+  upgradeData: Upgrade;
+  buyButton: HTMLButtonElement;
+}
+
+//VARIABLES
 
 //duration until next autoclick occurs
 let autoClickRate = 0;
@@ -58,24 +63,13 @@ let autoClickRate = 0;
 let prevAutoClickTime: number | null = null;
 //total amount of clicks
 let total = 0;
-//EVENT LISTENERS
+//array of butttons with upgrade data
+const purchaseButtonList: purchaseButton[] = [];
 
-addButtons();
+//EVENT LISTENERS
 
 button.addEventListener("click", () => {
   buttonClick();
-});
-
-buyButtonA.addEventListener("click", () => {
-  purchaseClicker(getUpgrade("upgradeA"));
-});
-
-buyButtonB.addEventListener("click", () => {
-  purchaseClicker(getUpgrade("upgradeB"));
-});
-
-buyButtonC.addEventListener("click", () => {
-  purchaseClicker(getUpgrade("upgradeC"));
 });
 
 //ANIMATION
@@ -90,16 +84,21 @@ function addButtons() {
   }
 }
 
-function createButton(upgradeData: Upgrade) {
+function createButton(input: Upgrade) {
   const newButton = document.createElement("button");
   newButton.disabled = true;
   newButton.style.fontSize = "4em";
-  newButton.innerText = "Buy an autoclicker! - " + upgradeData.name;
+  newButton.innerText = "Buy an autoclicker! - " + input.name;
   buttonsDiv.appendChild(newButton);
 
   newButton.addEventListener("click", () => {
-    purchaseClicker(getUpgrade(upgradeData.name));
+    purchaseClicker(getUpgrade(input.name));
   });
+  const newButtonInterface: purchaseButton = {
+    upgradeData: input,
+    buyButton: newButton,
+  };
+  purchaseButtonList.push(newButtonInterface);
 }
 
 function buttonClick() {
@@ -160,21 +159,13 @@ function updateGrowthRateDiv() {
 
 function checkPrices() {
   //checks if the prices for any item in the shop are within the player's budget.
-  if (total >= 10) {
-    buyButtonA.disabled = false;
-  } else {
-    buyButtonA.disabled = true;
-  }
-
-  if (total >= 100) {
-    buyButtonB.disabled = false;
-  } else {
-    buyButtonB.disabled = true;
-  }
-
-  if (total >= 1000) {
-    buyButtonC.disabled = false;
-  } else {
-    buyButtonC.disabled = true;
+  for (const button of purchaseButtonList) {
+    if (total >= button.upgradeData.price) {
+      button.buyButton.disabled = false;
+    } else {
+      button.buyButton.disabled = true;
+    }
   }
 }
+
+addButtons();
