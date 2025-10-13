@@ -3,6 +3,7 @@ import "./style.css";
 //HTML-CSS PREAMBLE
 
 const gameContainer = document.createElement("div");
+gameContainer.id = "gameContainer";
 document.body.appendChild(gameContainer);
 
 const button = document.createElement("button");
@@ -149,7 +150,7 @@ function purchaseClicker(type: Upgrade | null) {
   }
   autoClickRate += type.rate;
   total -= type.price;
-  type.price *= 1.15
+  type.price *= 1.15;
   type.count += 1;
 
   checkPrices();
