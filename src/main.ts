@@ -12,7 +12,7 @@ gameContainer.appendChild(addButtonDiv);
 
 const button = document.createElement("button");
 button.style.fontSize = "4em";
-button.innerText = "Add";
+button.innerText = "🍎";
 addButtonDiv.appendChild(button);
 
 const counterDiv = document.createElement("div");
@@ -64,6 +64,8 @@ const upgrades: Upgrade[] = [{
 interface purchaseButton {
   upgradeData: Upgrade;
   buyButton: HTMLButtonElement;
+  shopSlot: HTMLDivElement;
+  priceSlot: HTMLDivElement;
 }
 
 //VARIABLES
@@ -101,7 +103,12 @@ function createButton(input: Upgrade) {
   const shopDiv = document.createElement("div");
   shopDiv.id = "shopEntry";
 
-  shopDiv.appendChild(newButton);
+  const priceDiv = document.createElement("div");
+  priceDiv.innerText = String(input.price);
+  priceDiv.id = "priceSlot";
+
+  shopDiv.appendChild(priceDiv);
+  priceDiv.appendChild(newButton);
   buttonsDiv.appendChild(shopDiv);
 
   newButton.addEventListener("click", () => {
@@ -110,6 +117,8 @@ function createButton(input: Upgrade) {
   const newButtonInterface: purchaseButton = {
     upgradeData: input,
     buyButton: newButton,
+    shopSlot: shopDiv,
+    priceSlot: priceDiv,
   };
   purchaseButtonList.push(newButtonInterface);
 }

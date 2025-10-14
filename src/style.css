@@ -1,3 +1,7 @@
+body {
+  background-color: lightgreen;
+}
+
 .icon {
   width: 64px;
   vertical-align: top;
@@ -5,7 +9,8 @@
 }
 
 #gameContainer {
-  border: solid black 3px;
+  background-color: whitesmoke;
+  border: solid darkred 2px;
   width: 90%;
   margin: 0 auto;
 }
@@ -27,4 +32,8 @@
   padding: 2%;
   text-align: left;
   width: 60%;
+}
+
+#priceSlot {
+  text-align: left;
 }
