@@ -55,3 +55,8 @@ body {
   width: 20%;
   margin: 5px;
 }
+
+#upgradeCounter {
+  align-self: left;
+  size: x-large;
+}

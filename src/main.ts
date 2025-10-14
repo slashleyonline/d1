@@ -22,7 +22,7 @@ counterDiv.textContent = "🚶 total amount: 0";
 addButtonDiv.appendChild(counterDiv);
 
 const growthRateDiv = document.createElement("div");
-growthRateDiv.textContent = "0 people per second.";
+growthRateDiv.textContent = "0 apples per second.";
 addButtonDiv.appendChild(growthRateDiv);
 
 const buttonsDiv = document.createElement("div");
@@ -36,28 +36,33 @@ gameContainer.appendChild(buttonsDiv);
 interface Upgrade {
   name: string;
   count: number;
+  symbol: string;
   rate: number;
   price: number;
 }
 
 //FOR ALL ITEMS, MAKE A FUNCTION THAT ADDS BUTTONS BASED ON THE ITEM
 const upgrades: Upgrade[] = [{
-  name: "🍏 Green Apple",
+  name: "Green Apple",
+  symbol: "🍏",
   count: 0,
   rate: 0.0001,
   price: 10,
 }, {
-  name: "🧑‍🌾 Farmer",
+  name: "Farmer",
+  symbol: "🧑‍🌾",
   count: 0,
   rate: 0.002,
   price: 100,
 }, {
-  name: "🌳 Apple Tree",
+  name: "Apple Tree",
+  symbol: "🌳",
   count: 0,
   rate: 0.05,
   price: 1000,
 }, {
-  name: "👿 Apple Demon",
+  name: "Apple Demon",
+  symbol: "👿",
   count: 0,
   rate: 0.5,
   price: 10000,
@@ -68,6 +73,7 @@ interface purchaseButton {
   buyButton: HTMLButtonElement;
   shopSlot: HTMLDivElement;
   priceSlot: HTMLDivElement;
+  upgradeCounter: HTMLDivElement;
 }
 
 //VARIABLES
@@ -109,7 +115,13 @@ function createButton(input: Upgrade) {
   priceDiv.innerText = String("🍎 " + input.price);
   priceDiv.id = "priceSlot";
 
+  const upgradeCounter = document.createElement("div");
+  upgradeCounter.id = "upgradeCounter";
+  upgradeCounter.style.fontSize = "x-large";
+  upgradeCounter.innerText = "x0";
+
   shopDiv.appendChild(priceDiv);
+  shopDiv.appendChild(upgradeCounter);
   shopDiv.appendChild(newButton);
   buttonsDiv.appendChild(shopDiv);
 
@@ -121,6 +133,7 @@ function createButton(input: Upgrade) {
     buyButton: newButton,
     shopSlot: shopDiv,
     priceSlot: priceDiv,
+    upgradeCounter: upgradeCounter,
   };
   purchaseButtonList.push(newButtonInterface);
 }
@@ -129,7 +142,7 @@ function createButtonHTML(input: Upgrade): HTMLButtonElement {
   const newButton = document.createElement("button");
   newButton.disabled = true;
   newButton.style.fontSize = "4em";
-  newButton.innerText = "Buy - " + input.name;
+  newButton.innerText = "Buy - " + input.symbol + " " + input.name;
   newButton.id = "buyButton";
 
   return newButton;
@@ -181,14 +194,19 @@ function purchaseClicker(type: Upgrade | null) {
   type.price *= 1.15;
   type.count += 1;
 
+  updateUpgradeCounter(type);
   checkPrices();
   updateGrowthRateDiv();
+}
+
+function updateUpgradeCounter(type: Upgrade) {
+  console.log("updating counter! count: ", type.count);
 }
 
 function updateGrowthRateDiv() {
   const rate: number = autoClickRate * 1000;
   growthRateDiv.innerText = (Math.trunc(rate * 100) / 100) +
-    String(" people per second.");
+    String(" apples per second.");
 }
 
 function checkPrices() {
