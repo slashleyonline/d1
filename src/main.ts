@@ -156,8 +156,8 @@ function addToTotal(input: number) {
 }
 
 function updateCounter(input: number) {
-  counterDiv.innerText = String("🚶 total amount: ") +
-    (Math.trunc(input * 100) / 100);
+  counterDiv.innerText = String("🍎 total amount: ") +
+    (Math.trunc(input);
 }
 
 function getUpgrade(UpgradeName: string): Upgrade | null {
