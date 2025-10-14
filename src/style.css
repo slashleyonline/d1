@@ -22,3 +22,9 @@
 #shop {
   text-align: left;
 }
+
+#shopEntry {
+  padding: 2%;
+  text-align: left;
+  width: 60%;
+}

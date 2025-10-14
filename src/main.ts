@@ -96,11 +96,13 @@ function addButtons() {
 }
 
 function createButton(input: Upgrade) {
-  const newButton = document.createElement("button");
-  newButton.disabled = true;
-  newButton.style.fontSize = "4em";
-  newButton.innerText = "Buy an autoclicker! - " + input.name;
-  buttonsDiv.appendChild(newButton);
+  const newButton = createButtonHTML(input);
+
+  const shopDiv = document.createElement("div");
+  shopDiv.id = "shopEntry";
+
+  shopDiv.appendChild(newButton);
+  buttonsDiv.appendChild(shopDiv);
 
   newButton.addEventListener("click", () => {
     purchaseClicker(getUpgrade(input.name));
@@ -110,6 +112,15 @@ function createButton(input: Upgrade) {
     buyButton: newButton,
   };
   purchaseButtonList.push(newButtonInterface);
+}
+
+function createButtonHTML(input: Upgrade): HTMLButtonElement {
+  const newButton = document.createElement("button");
+  newButton.disabled = true;
+  newButton.style.fontSize = "4em";
+  newButton.innerText = "Buy an autoclicker! - " + input.name;
+
+  return newButton;
 }
 
 function buttonClick() {
