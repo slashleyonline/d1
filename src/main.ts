@@ -108,7 +108,7 @@ function createButton(input: Upgrade) {
   priceDiv.id = "priceSlot";
 
   shopDiv.appendChild(priceDiv);
-  priceDiv.appendChild(newButton);
+  shopDiv.appendChild(newButton);
   buttonsDiv.appendChild(shopDiv);
 
   newButton.addEventListener("click", () => {
@@ -157,7 +157,7 @@ function addToTotal(input: number) {
 
 function updateCounter(input: number) {
   counterDiv.innerText = String("🍎 total amount: ") +
-    (Math.trunc(input);
+    (Math.trunc(input));
 }
 
 function getUpgrade(UpgradeName: string): Upgrade | null {
