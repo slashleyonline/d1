@@ -11,7 +11,9 @@ addButtonDiv.id = "clicker";
 gameContainer.appendChild(addButtonDiv);
 
 const button = document.createElement("button");
+button.id = "clickerButton";
 button.style.fontSize = "4em";
+button.style.backgroundColor = "#ccff66";
 button.innerText = "🍎";
 addButtonDiv.appendChild(button);
 
@@ -40,7 +42,7 @@ interface Upgrade {
 
 //FOR ALL ITEMS, MAKE A FUNCTION THAT ADDS BUTTONS BASED ON THE ITEM
 const upgrades: Upgrade[] = [{
-  name: "upgradeA",
+  name: "🍏 Green Apple",
   count: 0,
   rate: 0.0001,
   price: 10,
@@ -104,7 +106,7 @@ function createButton(input: Upgrade) {
   shopDiv.id = "shopEntry";
 
   const priceDiv = document.createElement("div");
-  priceDiv.innerText = String(input.price);
+  priceDiv.innerText = String("🍎 " + input.price);
   priceDiv.id = "priceSlot";
 
   shopDiv.appendChild(priceDiv);
@@ -127,7 +129,8 @@ function createButtonHTML(input: Upgrade): HTMLButtonElement {
   const newButton = document.createElement("button");
   newButton.disabled = true;
   newButton.style.fontSize = "4em";
-  newButton.innerText = "Buy an autoclicker! - " + input.name;
+  newButton.innerText = "Buy - " + input.name;
+  newButton.id = "buyButton";
 
   return newButton;
 }
