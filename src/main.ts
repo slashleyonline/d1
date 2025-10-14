@@ -47,17 +47,17 @@ const upgrades: Upgrade[] = [{
   rate: 0.0001,
   price: 10,
 }, {
-  name: "upgradeB",
+  name: "🧑‍🌾 Farmer",
   count: 0,
   rate: 0.002,
   price: 100,
 }, {
-  name: "upgradeC",
+  name: "🌳 Apple Tree",
   count: 0,
   rate: 0.05,
   price: 1000,
 }, {
-  name: "upgradeD",
+  name: "👿 Apple Demon",
   count: 0,
   rate: 0.5,
   price: 10000,
@@ -196,7 +196,9 @@ function checkPrices() {
   for (const button of purchaseButtonList) {
     if (total >= button.upgradeData.price) {
       button.buyButton.disabled = false;
+      button.buyButton.style.color = "black";
     } else {
+      button.buyButton.style.color = "#B8860B";
       button.buyButton.disabled = true;
     }
   }
