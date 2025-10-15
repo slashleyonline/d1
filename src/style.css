@@ -66,6 +66,7 @@ body {
   float: right;
   size: x-large;
   background-color: white;
+  overflow: scroll;
 }
 
 #descDiv {
