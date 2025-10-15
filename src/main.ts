@@ -66,6 +66,12 @@ const upgrades: Upgrade[] = [{
   count: 0,
   rate: 0.5,
   price: 10000,
+}, {
+  name: "Apple Dimension",
+  symbol: "🌪️",
+  count: 0,
+  rate: 0.5,
+  price: 1000000,
 }];
 
 interface purchaseButton {
@@ -83,7 +89,7 @@ let autoClickRate = 0;
 //previous time that the autoclick function was called
 let prevAutoClickTime: number | null = null;
 //total amount of clicks
-let total = 0;
+let total = 1000000;
 //array of butttons with upgrade data
 const purchaseButtonList: purchaseButton[] = [];
 
@@ -203,6 +209,7 @@ function purchaseClicker(type: Upgrade | null) {
   type.price *= 1.15;
   type.count += 1;
 
+  updatePriceDiv(type);
   updateUpgradeCounter(type);
   checkPrices();
   updateGrowthRateDiv();
@@ -217,6 +224,17 @@ function updateUpgradeCounter(type: Upgrade) {
       counterDiv.innerText = "";
     }
     counterDiv.innerText += type.symbol;
+  }
+}
+
+function updatePriceDiv(type: Upgrade) {
+  const purchaseButton = getButton(type);
+  const priceDiv = purchaseButton?.priceSlot;
+  if (priceDiv != undefined) {
+    priceDiv.innerText = "🍎 " + Math.ceil(type.price);
+    console.log("updating price! ", type.price);
+  } else {
+    console.log("undefined!");
   }
 }
 
