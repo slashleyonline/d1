@@ -118,10 +118,10 @@ function createButton(input: Upgrade) {
   const upgradeCounter = document.createElement("div");
   upgradeCounter.id = "upgradeCounter";
   upgradeCounter.style.fontSize = "x-large";
-  upgradeCounter.innerText = "x0";
+  upgradeCounter.innerText = "None";
 
-  shopDiv.appendChild(priceDiv);
   shopDiv.appendChild(upgradeCounter);
+  shopDiv.appendChild(priceDiv);
   shopDiv.appendChild(newButton);
   buttonsDiv.appendChild(shopDiv);
 
@@ -176,9 +176,18 @@ function updateCounter(input: number) {
     (Math.trunc(input));
 }
 
-function getUpgrade(UpgradeName: string): Upgrade | null {
+function getUpgrade(upgradeName: string): Upgrade | null {
   for (const i of upgrades) {
-    if (i.name === UpgradeName) {
+    if (i.name === upgradeName) {
+      return i;
+    }
+  }
+  return null;
+}
+
+function getButton(input: Upgrade): purchaseButton | null {
+  for (const i of purchaseButtonList) {
+    if (i.upgradeData.name === input.name) {
       return i;
     }
   }
@@ -201,6 +210,14 @@ function purchaseClicker(type: Upgrade | null) {
 
 function updateUpgradeCounter(type: Upgrade) {
   console.log("updating counter! count: ", type.count);
+  const purchaseButton = getButton(type);
+  const counterDiv = purchaseButton?.upgradeCounter;
+  if (counterDiv != undefined) {
+    if (counterDiv.innerText === "None") {
+      counterDiv.innerText = "";
+    }
+    counterDiv.innerText += type.symbol;
+  }
 }
 
 function updateGrowthRateDiv() {
