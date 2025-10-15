@@ -51,7 +51,7 @@ const upgrades: Upgrade[] = [{
   price: 10,
   desc: `Big and yummy green apple, 
     gives you energy to pick more apples! 
-  \n increases rate by 0.1.`,
+    increases rate by 0.1.`,
 }, {
   name: "Farmer",
   symbol: "🧑‍🌾",
@@ -138,9 +138,14 @@ function createButton(input: Upgrade) {
   upgradeCounter.style.fontSize = "x-large";
   upgradeCounter.innerText = "None";
 
+  const descDiv = document.createElement("div");
+  descDiv.innerText = input.desc;
+  descDiv.id = "descDiv";
+
   shopDiv.appendChild(upgradeCounter);
   shopDiv.appendChild(priceDiv);
   shopDiv.appendChild(newButton);
+  shopDiv.appendChild(descDiv);
   buttonsDiv.appendChild(shopDiv);
 
   newButton.addEventListener("click", () => {
