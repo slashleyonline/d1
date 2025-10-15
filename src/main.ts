@@ -39,6 +39,7 @@ interface Upgrade {
   symbol: string;
   rate: number;
   price: number;
+  desc: string;
 }
 
 //FOR ALL ITEMS, MAKE A FUNCTION THAT ADDS BUTTONS BASED ON THE ITEM
@@ -48,30 +49,41 @@ const upgrades: Upgrade[] = [{
   count: 0,
   rate: 0.0001,
   price: 10,
+  desc: `Big and yummy green apple, 
+    gives you energy to pick more apples! 
+  \n increases rate by 0.1.`,
 }, {
   name: "Farmer",
   symbol: "🧑‍🌾",
   count: 0,
-  rate: 0.002,
+  rate: 0.001,
   price: 100,
+  desc: `More hands picking more apples! 
+  Increases rate by 1`,
 }, {
   name: "Apple Tree",
   symbol: "🌳",
   count: 0,
   rate: 0.05,
   price: 1000,
+  desc: `More trees growing more fruit! 
+  Increases rate by 50`,
 }, {
   name: "Apple Demon",
   symbol: "👿",
   count: 0,
   rate: 0.5,
   price: 10000,
+  desc: `Summons an evil apple demon that conjures more apples! 
+  Increases rate by 500`,
 }, {
   name: "Apple Dimension",
   symbol: "🌪️",
   count: 0,
-  rate: 0.5,
+  rate: 5,
   price: 1000000,
+  desc: `Opens a vortex to the apple dimension. 
+  Increases rate by 5000`,
 }];
 
 interface purchaseButton {
