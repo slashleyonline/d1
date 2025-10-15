@@ -36,8 +36,9 @@ body {
 #shopEntry {
   background-color: #ffffcc;
   border: solid darkred 3px;
+  margin: 0 auto;
   margin-top: 25px;
-  margin-left: 25px;
+  margin-bottom: 25px;
   padding: 2%;
   text-align: left;
   width: 60%;
@@ -50,7 +51,7 @@ body {
 
 #priceSlot {
   font-size: xx-large;
-  text-align: center;
+  text-align: left;
   border: solid black 3px;
   width: 20%;
   margin: 5px;
