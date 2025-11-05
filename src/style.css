@@ -1,6 +1,10 @@
 body {
   background-color: lightgreen;
-  background-image: url("wp6379887.jpg");
+  background-image: url("apple-seamless-pattern-and-slice-dropping-on-white-background--red-apples-fruits-vector-v_1584556jpg!bw700.jpg");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 .icon {
@@ -42,9 +46,8 @@ body {
   margin-bottom: 25px;
   padding: 2%;
   text-align: left;
-  width: 60%;
-  height: 50%;
-  size: 30%;
+  width: 80%;
+  height: 10%;
 }
 
 #buyButton {
