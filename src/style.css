@@ -1,5 +1,6 @@
 body {
   background-color: lightgreen;
+  background-image: url("wp6379887.jpg");
 }
 
 .icon {
@@ -11,7 +12,7 @@ body {
 #gameContainer {
   background-color: #ccffcc;
   border: solid darkred 2px;
-  width: 90%;
+  width: 60%;
   margin: 0 auto;
 }
 

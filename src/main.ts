@@ -103,7 +103,7 @@ let autoClickRate = 0;
 //previous time that the autoclick function was called
 let prevAutoClickTime: number | null = null;
 //total amount of clicks
-let total = 1000000;
+let total = 0;
 //array of butttons with upgrade data
 const purchaseButtonList: purchaseButton[] = [];
 
