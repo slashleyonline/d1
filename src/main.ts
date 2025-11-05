@@ -166,7 +166,7 @@ function createButton(input: Upgrade) {
 function createButtonHTML(input: Upgrade): HTMLButtonElement {
   const newButton = document.createElement("button");
   newButton.disabled = true;
-  newButton.style.fontSize = "4em";
+  newButton.style.fontSize = "2em";
   newButton.innerText = "Buy - " + input.symbol + " " + input.name;
   newButton.id = "buyButton";
 

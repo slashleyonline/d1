@@ -43,9 +43,12 @@ body {
   padding: 2%;
   text-align: left;
   width: 60%;
+  height: 50%;
+  size: 30%;
 }
 
 #buyButton {
+  size: small;
   color: black;
   background-color: gold;
 }
@@ -65,7 +68,7 @@ body {
   height: 100px;
   position: fixed right;
   float: right;
-  size: x-large;
+  size: medium;
   background-color: white;
   overflow: scroll;
 }
