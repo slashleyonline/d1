@@ -15,7 +15,6 @@ gameContainer.appendChild(addButtonDiv);
 const button = document.createElement("button");
 button.id = "clickerButton";
 button.style.fontSize = "4em";
-button.style.backgroundColor = "#ccff66";
 button.innerText = "🍎";
 addButtonDiv.appendChild(button);
 

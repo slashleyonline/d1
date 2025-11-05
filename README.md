@@ -6,4 +6,5 @@ The basic theme for this game is summoning people to walk across the screen.
 I'm not fully sure why, I just wanted to have a sort of animated component to this game,
 and this seemed like it was within scope.
 
-I added a really cool apple background based on pl0the's cool skull background: https://github.com/Pl0the/cmpm-121-f25-d1-autmendo
+I added a really cool apple background based on pl0the's cool skull background: <https://github.com/Pl0the/cmpm-121-f25-d1-autmendo>
+hanged my button to be more like Ian's corn game: <https://github.com/ThatGuyIain/cmpm-121-incremental-game>
