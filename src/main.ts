@@ -1,5 +1,28 @@
 import "./style.css";
 
+//INTERFACE
+
+//Upgrade Interface for buyable items
+
+interface Upgrade {
+  name: string;
+  count: number;
+  symbol: string;
+  rate: number;
+  price: number;
+  desc: string;
+}
+
+interface purchaseButton {
+  upgradeData: Upgrade;
+  buyButton: HTMLButtonElement;
+  shopSlot: HTMLDivElement;
+  priceSlot: HTMLDivElement;
+  upgradeDisplay: HTMLDivElement;
+}
+
+//VARIABLES
+
 //HTML-CSS PREAMBLE
 
 const gameContainer = document.createElement("div");
@@ -27,19 +50,6 @@ addButtonDiv.appendChild(growthRateDiv);
 const buttonsDiv = document.createElement("div");
 buttonsDiv.id = "shop";
 gameContainer.appendChild(buttonsDiv);
-
-//INTERFACE
-
-//Upgrade Interface for buyable items
-
-interface Upgrade {
-  name: string;
-  count: number;
-  symbol: string;
-  rate: number;
-  price: number;
-  desc: string;
-}
 
 //FOR ALL ITEMS, MAKE A FUNCTION THAT ADDS BUTTONS BASED ON THE ITEM
 const upgrades: Upgrade[] = [{
@@ -85,16 +95,6 @@ const upgrades: Upgrade[] = [{
   Increases rate by 5000`,
 }];
 
-interface purchaseButton {
-  upgradeData: Upgrade;
-  buyButton: HTMLButtonElement;
-  shopSlot: HTMLDivElement;
-  priceSlot: HTMLDivElement;
-  upgradeCounter: HTMLDivElement;
-}
-
-//VARIABLES
-
 //duration until next autoclick occurs
 let autoClickRate = 0;
 //previous time that the autoclick function was called
@@ -132,16 +132,16 @@ function createButton(input: Upgrade) {
   priceDiv.innerText = String("🍎 " + input.price);
   priceDiv.id = "priceSlot";
 
-  const upgradeCounter = document.createElement("div");
-  upgradeCounter.id = "upgradeCounter";
-  upgradeCounter.style.fontSize = "x-large";
-  upgradeCounter.innerText = "None";
+  const upgradeDisplay = document.createElement("div");
+  upgradeDisplay.id = "upgradeCounter";
+  upgradeDisplay.style.fontSize = "x-large";
+  upgradeDisplay.innerText = "None";
 
   const descDiv = document.createElement("div");
   descDiv.innerText = input.desc;
   descDiv.id = "descDiv";
 
-  shopDiv.appendChild(upgradeCounter);
+  shopDiv.appendChild(upgradeDisplay);
   shopDiv.appendChild(priceDiv);
   shopDiv.appendChild(newButton);
   shopDiv.appendChild(descDiv);
@@ -155,7 +155,7 @@ function createButton(input: Upgrade) {
     buyButton: newButton,
     shopSlot: shopDiv,
     priceSlot: priceDiv,
-    upgradeCounter: upgradeCounter,
+    upgradeDisplay: upgradeDisplay,
   };
   purchaseButtonList.push(newButtonInterface);
 }
@@ -225,14 +225,14 @@ function purchaseClicker(type: Upgrade | null) {
   type.count += 1;
 
   updatePriceDiv(type);
-  updateUpgradeCounter(type);
+  updateupgradeDisplay(type);
   checkPrices();
   updateGrowthRateDiv();
 }
 
-function updateUpgradeCounter(type: Upgrade) {
+function updateupgradeDisplay(type: Upgrade) {
   const purchaseButton = getButton(type);
-  const counterDiv = purchaseButton?.upgradeCounter;
+  const counterDiv = purchaseButton?.upgradeDisplay;
   if (counterDiv != undefined) {
     if (counterDiv.innerText === "None") {
       counterDiv.innerText = "";
