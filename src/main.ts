@@ -1,5 +1,3 @@
-//DONE.
-
 import "./style.css";
 
 //HTML-CSS PREAMBLE
@@ -173,7 +171,6 @@ function createButtonHTML(input: Upgrade): HTMLButtonElement {
 }
 
 function buttonClick() {
-  //console.log("total amount: ", String(total));
   addToTotal(1);
 }
 
@@ -234,7 +231,6 @@ function purchaseClicker(type: Upgrade | null) {
 }
 
 function updateUpgradeCounter(type: Upgrade) {
-  console.log("updating counter! count: ", type.count);
   const purchaseButton = getButton(type);
   const counterDiv = purchaseButton?.upgradeCounter;
   if (counterDiv != undefined) {
@@ -250,9 +246,6 @@ function updatePriceDiv(type: Upgrade) {
   const priceDiv = purchaseButton?.priceSlot;
   if (priceDiv != undefined) {
     priceDiv.innerText = "🍎 " + Math.ceil(type.price);
-    console.log("updating price! ", type.price);
-  } else {
-    console.log("undefined!");
   }
 }
 
